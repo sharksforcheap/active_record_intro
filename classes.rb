@@ -16,7 +16,8 @@ ActiveRecord::Base.connection.execute <<SQL
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   CREATE TABLE classes (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     department_id INTEGER NOT NULL,
@@ -25,7 +26,8 @@ ActiveRecord::Base.connection.execute <<SQL
     updated_at    DATETIME NOT NULL,
     FOREIGN KEY(department_id) REFERENCES departments(id)
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   CREATE TABLE sections (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     class_id        INTEGER NOT NULL,
@@ -39,13 +41,15 @@ ActiveRecord::Base.connection.execute <<SQL
     FOREIGN KEY(teacher_id) REFERENCES people(id),
     FOREIGN KEY(section_type_id) REFERENCES section_types(id)
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   -- e.g., 'MWF', 'TuTh'
   CREATE TABLE section_types (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(32) NOT NULL
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   -- Grade is a decimal from 0.000 to 4.000
   CREATE TABLE sections_students (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -57,7 +61,8 @@ ActiveRecord::Base.connection.execute <<SQL
     FOREIGN KEY(section_id) REFERENCES sections(id),
     FOREIGN KEY(student_id) REFERENCES people(id)
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   CREATE TABLE departments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(32) NOT NULL

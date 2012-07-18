@@ -17,7 +17,9 @@ ActiveRecord::Base.connection.execute <<SQL
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
   );
+SQL
 
+ActiveRecord::Base.connection.execute <<SQL
   CREATE TABLE addresses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     contact_id INTEGER NOT NULL,

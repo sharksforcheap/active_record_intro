@@ -15,7 +15,8 @@ ActiveRecord::Base.connection.execute <<SQL
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   -- One row per poll
   -- e.g.,
   -- (1,1,"Who are you voting for in 2012?")
@@ -30,6 +31,8 @@ ActiveRecord::Base.connection.execute <<SQL
     updated_at DATETIME NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id)
   );
+SQL
+ActiveRecord::Base.connection.execute <<SQL
 
   -- One row per (potential) response in a poll
   -- e.g., 
@@ -42,7 +45,8 @@ ActiveRecord::Base.connection.execute <<SQL
     content VARCHAR NOT NULL, 
     FOREIGN KEY(poll_id) REFERENCES polls(id)
   );
-
+SQL
+ActiveRecord::Base.connection.execute <<SQL
   -- One row per vote in a poll
   -- "user_id" points to the user who voted in the poll
   -- "poll_Id" points to the poll voted in

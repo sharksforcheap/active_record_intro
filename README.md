@@ -1,4 +1,6 @@
 active_record_intro
 ===================
 
-Schema for Active Record intro
+Look in the <code>solutions/</code> directory.
+
+You won't.

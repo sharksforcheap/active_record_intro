@@ -59,7 +59,8 @@ ActiveRecord::Base.connection.execute <<SQL
     created_at  DATETIME NOT NULL,
     updated_at  DATETIME NOT NULL,
     FOREIGN KEY(poll_id) REFERENCES polls(id),
-    FOREIGN KEY(user_id) REFERENCES users(id)
+    FOREIGN KEY(user_id) REFERENCES users(id),
+    FOREIGN KEY(response_id) REFERENCES responses(id)
   );
 
 SQL
